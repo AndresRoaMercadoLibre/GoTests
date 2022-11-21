@@ -1,7 +1,7 @@
 package main
 
 import (
-	"TDD/mock"
+	"TDD/model/mock"
 	"fmt"
 )
 
