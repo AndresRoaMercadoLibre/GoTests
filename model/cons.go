@@ -1,5 +1,10 @@
 package model
 
 const (
-	ENGLISHELLOPREFIX = "Hello, "
+	SPANISH = "Spanish"
+	FRENCH  = "French"
+
+	ENGLISHELLOPREFIX  = "Hello, "
+	SPANISHHELLOPREFIX = "Hola, "
+	FRENCHHHELLOPREFIX = "Bonjour, "
 )

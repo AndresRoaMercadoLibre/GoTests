@@ -1,10 +1,24 @@
 package mock
 
-import "TDD/model"
+import (
+	"TDD/model"
+)
 
-func Hello(name string) string {
+func Hello(name string, language string) string {
 	if name == "" {
 		name = "World"
 	}
-	return model.ENGLISHELLOPREFIX + name
+
+	return greetingPrefix(language) + name
+}
+
+func greetingPrefix(language string) (prefix string) {
+	if language == model.SPANISH {
+		return model.SPANISHHELLOPREFIX
+	}
+	if language == model.FRENCH {
+		return model.FRENCHHHELLOPREFIX
+	}
+
+	return model.ENGLISHELLOPREFIX
 }
