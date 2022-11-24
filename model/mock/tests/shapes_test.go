@@ -21,7 +21,7 @@ func TestArea(t *testing.T) {
 		t.Helper()
 		got := shape.Area()
 		if got != want {
-			t.Errorf("got %.2f want %2.f", got, want)
+			t.Errorf("got %2.7f want %2.7f", got, want)
 		}
 	}
 	t.Run("rectangle", func(t *testing.T) {
@@ -30,8 +30,8 @@ func TestArea(t *testing.T) {
 	})
 
 	t.Run("Circle", func(t *testing.T) {
-		circle := mock.Circle{10}
-		checkArea(t, circle, 314.15922653589793)
+		circle := mock.Circle{Radius: 10}
+		checkArea(t, circle, 314.15)
 	})
 
 }
@@ -42,9 +42,9 @@ func TestAreaList(t *testing.T) {
 		shape   interfaces.Shape
 		hasArea float64
 	}{
-		{name: "Rectagle", shape: mock.Rectangle{Width: 12, Height: 6}, hasArea: 72.0},
-		{name: "Circle", shape: mock.Circle{Radius: 10}, hasArea: 314.1592653589793},
-		{name: "Trangle", shape: mock.Triangle{Base: 12.0, Height: 6.0}, hasArea: 36.0},
+		{name: "Rectagle", shape: mock.Rectangle{Width: 12, Height: 6}, hasArea: 72},
+		{name: "Circle", shape: mock.Circle{Radius: 10}, hasArea: 314.15},
+		{name: "Triangle", shape: mock.Triangle{Base: 12, Height: 6}, hasArea: 36.0},
 	}
 
 	for _, tt := range areaTests {

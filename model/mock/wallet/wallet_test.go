@@ -1,31 +1,30 @@
-package tests
+package wallet
 
 import (
-	"TDD/model/mock"
 	"testing"
 )
 
 func TestWallet(t *testing.T) {
 
 	t.Run("deposit", func(t *testing.T) {
-		wallet := mock.Wallet{}
-		wallet.Deposit(mock.Bitcoin(10))
-		assertBalance(t, wallet, mock.Bitcoin(10))
+		wallet := Wallet{}
+		wallet.Deposit(wallet.Bitcoin(10))
+		assertBalance(t, wallet, wallet.Bitcoin(10))
 	})
 
 	t.Run("withdraw", func(t *testing.T) {
-		wallet := mock.Wallet{mock.Bitcoin(20)}
-		err := wallet.Withdraw(mock.Bitcoin(10))
+		wallet := Wallet{Bitcoin(20)}
+		err := wallet.Withdraw(wallet.Bitcoin(10))
 		assertNoError(t, err)
-		assertBalance(t, wallet, mock.Bitcoin(10))
+		assertBalance(t, wallet, wallet.Bitcoin(10))
 	})
 
 	t.Run("Withdraw insufficient funds", func(t *testing.T) {
-		wallet := mock.Wallet{mock.Bitcoin(20)}
-		err := wallet.Withdraw(mock.Bitcoin(100))
+		wallet := Wallet{Bitcoin(20)}
+		err := wallet.Withdraw(wallet.Bitcoin(100))
 
-		assertError(t, err, mock.ErrInsufficientFunds)
-		assertBalance(t, wallet, mock.Bitcoin(20))
+		assertError(t, err, wallet.ErrInsufficientFunds)
+		assertBalance(t, wallet, wallet.Bitcoin(20))
 
 	})
 }
@@ -37,7 +36,7 @@ func assertNoError(t *testing.T, got error) {
 	}
 }
 
-func assertBalance(t testing.TB, wallet mock.Wallet, want mock.Bitcoin) {
+func assertBalance(t testing.TB, wallet Wallet, want Bitcoin) {
 	t.Helper()
 	got := wallet.Balance()
 	if got != want {
